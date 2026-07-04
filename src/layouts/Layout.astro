@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+import defaultImage from "../../public/default-og.jpg";
+import defaultIcon from "../../public/favicon.svg";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	icon?: string;
+	keywords?: string;
+}
+
+const DEFAULT_TITLE = "Astro";
+const DEFAULT_DESCRIPTION = "Astro is a modern front-end framework for building fast, content-focused websites.";
+const DEFAULT_KEYWORDS = "Astro, front-end framework, fast websites, content-focused websites, modern web development";
+const DEFAULT_IMAGE = defaultImage;
+const DEFAULT_ICON = defaultIcon;
+
+const {
+	title = DEFAULT_TITLE,
+	description = DEFAULT_DESCRIPTION,
+	image = DEFAULT_IMAGE,
+	icon = DEFAULT_ICON,
+	keywords = DEFAULT_KEYWORDS,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image as string, Astro.url);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+
+		<link rel="icon" type="image/svg+xml" href={icon as string} />
+		<link rel="icon" href="/favicon.ico" />
+
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- primary meta -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="keywords" content={keywords} />
+		<link
+			rel="author"
+			href="https://www.facebook.com/groups/1664403878240068/"
+		/>
+
+		<!-- facebook meta -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageURL} />
+
+		<!-- twitter meta -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta
+			property="twitter:image"
+			content={imageURL}
+		/>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+</style>

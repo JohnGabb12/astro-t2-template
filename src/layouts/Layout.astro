@@ -2,6 +2,8 @@
 import "~/styles/global.css";
 import defaultImage from "@public/default-og.jpg";
 import defaultIcon from "@public/favicon.svg";
+import Topbar from '~/components/Topbar.astro';
+import Footer from '~/components/Footer.astro';
 
 interface Props {
 	title?: string;
@@ -73,6 +75,10 @@ const imageURL = resolvedImage
 		<meta property="twitter:image" content={imageURL} />
 	</head>
 	<body class="margin-0 w-full min-h-screen">
-		<slot />
+		<Topbar />
+		<main class="w-full min-h-screen">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>

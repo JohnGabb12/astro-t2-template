@@ -1,4 +1,4 @@
-# Astro Starter Kit: Minimal
+# Astro T2 Template + React
 
 ```sh
 pnpm create astro@latest -- --template minimal

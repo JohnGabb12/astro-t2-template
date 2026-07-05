@@ -9,16 +9,30 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint . --config eslint.config.js",
+    "add:react": "astro add react",
+    "remove:react": "pnpm remove @astrojs/react react react-dom",
+    "add:vue": "astro add vue",
+    "remove:vue": "pnpm remove @astrojs/vue vue",
+    "add:solid": "astro add solid",
+    "remove:solid": "pnpm remove @astrojs/solid-js solid-js",
+    "add:svelte": "astro add svelte",
+    "remove:svelte": "pnpm remove @astrojs/svelte svelte",
+    "add:angular": "astro add angular",
+    "remove:angular": "pnpm remove @astrojs/angular @angular/core @angular/common zone.js"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.1",
     "@tailwindcss/vite": "^4.3.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "astro": "^7.0.6",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "eslint": "^10.6.0",
     "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.62.1",
+    "eslint-plugin-astro": "^2.1.1",
+    "typescript-eslint": "^8.62.1"
   }
 }

@@ -1,4 +1,12 @@
-# Astro T2 Template + React
+# Astro T2 Template
+
+## Includes:
+1. Astro
+2. Tailwindcss
+3. Eslint
+4. 5 Static Unstyled Default Portfolio Pages
+5. Topbar, Footer, ToS Page, and Privacy Policy Page
+6. Typescript
 
 ```sh
 pnpm create astro@latest -- --template minimal

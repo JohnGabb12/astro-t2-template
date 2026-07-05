@@ -1,7 +1,7 @@
 ---
-import '../styles/global.css';
-import defaultImage from "../../public/default-og.jpg";
-import defaultIcon from "../../public/favicon.svg";
+import "~/styles/global.css";
+import defaultImage from "@public/default-og.jpg";
+import defaultIcon from "@public/favicon.svg";
 
 interface Props {
 	title?: string;
@@ -12,8 +12,10 @@ interface Props {
 }
 
 const DEFAULT_TITLE = "Astro";
-const DEFAULT_DESCRIPTION = "Astro is a modern front-end framework for building fast, content-focused websites.";
-const DEFAULT_KEYWORDS = "Astro, front-end framework, fast websites, content-focused websites, modern web development";
+const DEFAULT_DESCRIPTION =
+	"Astro is a modern front-end framework for building fast, content-focused websites.";
+const DEFAULT_KEYWORDS =
+	"Astro, front-end framework, fast websites, content-focused websites, modern web development";
 const DEFAULT_IMAGE = defaultImage;
 const DEFAULT_ICON = defaultIcon;
 
@@ -25,12 +27,18 @@ const {
 	keywords = DEFAULT_KEYWORDS,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const imageURL = new URL(image as string, Astro.url);
+const canonicalURL = Astro.site
+	? new URL(Astro.url.pathname, Astro.site)
+	: Astro.url.pathname;
+const resolvedImage =
+	typeof image === "string" ? image : image && "src" in image ? image.src : "";
+const imageURL = resolvedImage
+	? new URL(resolvedImage, Astro.url.origin).toString()
+	: "";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="margin-0 w-full min-h-screen">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -62,21 +70,9 @@ const imageURL = new URL(image as string, Astro.url);
 		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta
-			property="twitter:image"
-			content={imageURL}
-		/>
+		<meta property="twitter:image" content={imageURL} />
 	</head>
-	<body>
+	<body class="margin-0 w-full min-h-screen">
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		min-height: 100%;
-	}
-</style>

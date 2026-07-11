@@ -41,9 +41,26 @@ const {
 } = Astro.props;
 ---
 
+<script type="module" lang="ts">
+	// This script is for the mobile navigation to hide if the user is seeing the footer.
+	const mobileNav = document.getElementById("mobile-nav");
+
+	if (!mobileNav) throw new Error("Mobile navigation element not found.");
+
+	window.addEventListener('scroll', () => {
+      if (window.scrollY >= document.documentElement.scrollHeight - (window.innerHeight * 1.25)) { // hide
+        mobileNav.classList.add('opacity-0', 'pointer-events-none');
+        mobileNav.classList.remove('opacity-100');
+      } else { // show
+        mobileNav.classList.remove('opacity-0', 'pointer-events-none');
+        mobileNav.classList.add('opacity-100');
+      }
+    });
+</script>
+
 <header
 	class={cn(
-		"w-full bg-white border-b border-gray-100 px-4 py-3 sm:px-6",
+		"w-full bg-white border-b border-gray-100 px-4 py-3 sm:px-6 fixed top-0 left-0 z-50",
 		_class,
 	)}
 >
@@ -99,35 +116,38 @@ const {
 		</nav>
 
 		{/* Primary Call to Action Button */}
-		<CTAButton text="Join Now" href="/join" variant="primary" />
+		<div class="hidden sm:block w-fit">
+			<CTAButton text="Join Now" href="/join" variant="primary" />
+		</div>
 
-    <nav
-      class="flex md:hidden flex-row items-center gap-6 fixed bottom-4 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-full px-6 py-2 shadow-lg z-50"
-      aria-label="Mobile Navigation"
-    >
-      {
-        links.map((link) => {
-          const isActive =
-            link.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(link.href);
+		<nav
+			class="flex md:hidden flex-row transition-opacity duration-300 items-center gap-6 fixed bottom-4 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-full px-6 py-2 shadow-lg z-50"
+			id="mobile-nav"
+			aria-label="Mobile Navigation"
+		>
+			{
+				links.map((link) => {
+					const isActive =
+						link.href === "/"
+							? pathname === "/"
+							: pathname.startsWith(link.href);
 
-          return (
-            <a
-              href={link.href}
-              class={cn(
-                "flex flex-col items-center text-xs transition-colors duration-200 focus-visible:outline-blue-500",
-                isActive
-                  ? "text-blue-500 font-semibold"
-                  : "text-gray-600 hover:text-blue-500",
-              )}
-            >
-              {link.icon && <link.icon class="h-7 w-7 mb-1" />}
-              {link.label}
-            </a>
-          );
-        })
-      }
-    </nav>
+					return (
+						<a
+							href={link.href}
+							class={cn(
+								"flex flex-col items-center text-xs transition-colors duration-200 focus-visible:outline-blue-500",
+								isActive
+									? "text-blue-500 font-semibold"
+									: "text-gray-600 hover:text-blue-500",
+							)}
+						>
+							{link.icon && <link.icon class="h-7 w-7 mb-1" />}
+							{link.label}
+						</a>
+					);
+				})
+			}
+		</nav>
 	</div>
 </header>

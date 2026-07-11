@@ -10,6 +10,7 @@ import {
 	Info,
 	UserRound,
 } from "@lucide/astro";
+import CTAButton from "~/components/CallToActionButton.astro";
 
 const pathname = Astro.url.pathname;
 
@@ -98,14 +99,7 @@ const {
 		</nav>
 
 		{/* Primary Call to Action Button */}
-		<div class="flex items-center gap-4">
-			<a
-				href="/"
-				class="inline-flex items-center justify-center bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded transition-colors duration-200 hover:bg-blue-700 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-			>
-				Join Now
-			</a>
-		</div>
+		<CTAButton text="Join Now" href="/join" variant="primary" />
 
     <nav
       class="flex md:hidden flex-row items-center gap-6 fixed bottom-4 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-full px-6 py-2 shadow-lg z-50"

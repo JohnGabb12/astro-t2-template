@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Phone, Mail, MapPin } from "@lucide/astro";
 import DEFAULT_FOOTER_IMAGE from "~/assets/astro_alt.png";
+import CTAButton from "~/components/CallToActionButton.astro";
 const DEFAULT_FOOTER_LINKS = {
 	Home: "/",
 	Projects: "/projects",
@@ -12,7 +13,7 @@ const DEFAULT_FOOTER_LINKS = {
 ---
 
 <footer
-	class="w-full h-[70vh] bg-blue-500 border-t border-gray-100 px-4 py-6 sm:px-6"
+	class="w-full h-[70vh] bg-blue-500 border-t border-gray-100 px-4 py-6 sm:px-6 flex flex-col"
 >
 	<div class="grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl mx-auto grid">
 		<!-- Contact -->
@@ -54,6 +55,7 @@ const DEFAULT_FOOTER_LINKS = {
 					</li>
 				</ul>
 			</span>
+      <CTAButton text="Join Now" href="/join" variant="secondary" />
 		</aside>
 		<nav
 			class="flex flex-row gap-4 w-full grid-cols-1 md:grid-cols-2 md:text-start text-center mt-6 md:mt-0"
@@ -94,4 +96,7 @@ const DEFAULT_FOOTER_LINKS = {
 			</ul>
 		</nav>
 	</div>
+  <div class="text-center text-white mt-auto">
+    &copy; {new Date().getFullYear()} Astro T2 Template. All rights reserved.
+  </div>
 </footer>

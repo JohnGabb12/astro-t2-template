@@ -13,9 +13,16 @@ const { text, href, variant }: Props = Astro.props;
 	href={href}
 	class={cn(
 		"inline-flex items-center w-full md:mx-0 mx-auto sm:w-fit justify-center px-4 py-2 rounded font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-offset-2",
-		variant === "primary"
-			? "bg-blue-600 text-white hover:bg-blue-700 focus-visible:outline-blue-600"
-			: "bg-gray-200 text-gray-800 hover:bg-gray-300 focus-visible:outline-gray-400",
+		(() => {
+			switch (variant) {
+				case "primary":
+					return "bg-primary text-primary-content hover:bg-primary/90 focus-visible:outline-primary";
+				case "secondary":
+					return "bg-base-200 text-primary hover:bg-base-300 focus-visible:outline-base-300";
+				default:
+					return "bg-primary text-primary-content hover:bg-primary/90 focus-visible:outline-primary";
+			}
+		})(),
 	)}
 >
 	{text}

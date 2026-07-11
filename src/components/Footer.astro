@@ -13,7 +13,7 @@ const DEFAULT_FOOTER_LINKS = {
 ---
 
 <footer
-	class="w-full min-h-[70vh] bg-blue-500 border-t border-gray-100 px-4 py-6 sm:px-6 flex flex-col"
+	class="w-full min-h-[70vh] bg-primary border-t border-base-300 px-4 py-6 sm:px-6 flex flex-col"
 >
 	<div class="grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl w-full mx-auto grid">
 		<!-- Contact -->
@@ -23,14 +23,14 @@ const DEFAULT_FOOTER_LINKS = {
 				alt="Logo"
 				class="h-20 md:w-fit w-full object-contain"
 			/>
-			<span class="text-white">
+			<span class="text-primary-content">
 				<ul
 					class="flex flex-row gap-4 items-center md:justify-start justify-center"
 				>
 					<li class="flex items-center gap-2 mb-1">
 						<a
 							href="tel:+1234567890"
-							class="flex items-center gap-2 p-2 bg-blue-400 rounded hover:bg-blue-300 transition-colors"
+							class="flex items-center gap-2 p-2 rounded hover:text-secondary transition-colors"
 						>
 							<Phone class="w-6 h-6" />
 						</a>
@@ -38,7 +38,7 @@ const DEFAULT_FOOTER_LINKS = {
 					<li class="flex items-center gap-2 mb-1">
 						<a
 							href="mailto:info@company.com"
-							class="flex items-center gap-2 p-2 bg-blue-400 rounded hover:bg-blue-300 transition-colors"
+							class="flex items-center gap-2 p-2 rounded hover:text-secondary transition-colors"
 						>
 							<Mail class="w-6 h-6" />
 						</a>
@@ -46,7 +46,7 @@ const DEFAULT_FOOTER_LINKS = {
 					<li class="flex items-center gap-2 mb-1">
 						<a
 							href="https://maps.google.com/?q=123+Main+St,+City,+Country"
-							class="flex items-center gap-2 p-2 bg-blue-400 rounded hover:bg-blue-300 transition-colors"
+							class="flex items-center gap-2 p-2 rounded hover:text-secondary transition-colors"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -61,13 +61,13 @@ const DEFAULT_FOOTER_LINKS = {
 			class="flex flex-row gap-4 w-full grid-cols-1 md:grid-cols-2 md:text-start text-center mt-6 md:mt-0"
 		>
 			<ul class="flex flex-col gap-2 grow">
-				<span class="text-white text-lg font-semibold">Quick Links</span>
+				<span class="text-primary-content text-lg font-semibold">Quick Links</span>
 				{
 					Object.entries(DEFAULT_FOOTER_LINKS).map(([label, href]) => (
 						<li>
 							<a
 								href={href}
-								class="text-white hover:text-gray-200 transition-colors"
+								class="text-primary-content hover:text-primary-content/50 transition-colors"
 							>
 								{label}
 							</a>
@@ -76,11 +76,11 @@ const DEFAULT_FOOTER_LINKS = {
 				}
 			</ul>
 			<ul class="flex flex-col gap-2 grow">
-				<span class="text-white text-lg font-semibold">Legal</span>
+				<span class="text-primary-content text-lg font-semibold">Legal</span>
 				<li>
 					<a
 						href="/privacy-policy"
-						class="text-white hover:text-gray-200 transition-colors"
+						class="text-primary-content hover:text-primary-content/50 transition-colors"
 					>
 						Privacy Policy
 					</a>
@@ -88,7 +88,7 @@ const DEFAULT_FOOTER_LINKS = {
 				<li>
 					<a
 						href="/terms-of-service"
-						class="text-white hover:text-gray-200 transition-colors"
+						class="text-primary-content hover:text-primary-content/50 transition-colors"
 					>
 						Terms of Service
 					</a>
@@ -96,7 +96,7 @@ const DEFAULT_FOOTER_LINKS = {
 			</ul>
 		</nav>
 	</div>
-  <div class="text-center text-white mt-auto">
+  <div class="text-center text-primary-content mt-auto">
     &copy; {new Date().getFullYear()} Astro T2 Template. All rights reserved.
   </div>
 </footer>
